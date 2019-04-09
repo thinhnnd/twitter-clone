@@ -3,6 +3,8 @@ import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {withStyles} from '@material-ui/core/styles';
+import { connect } from 'react-redux'
+import { loginUser } from '../../actions/authActions'
 
 const styles = {
     textField: {
@@ -48,9 +50,8 @@ class Login extends Component {
             email: this.state.email,
             password: this.state.password
         }
-
-        console.log(userData)
-
+        
+        this.props.loginUser(userData)
     }
 
     render() {
@@ -92,7 +93,8 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    auth: state.auth,
     errors: state.errors
 })
 
-export default (withStyles(styles)(Login))
+export default connect(mapStateToProps, { loginUser })(withStyles(styles)(Login))
