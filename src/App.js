@@ -8,6 +8,8 @@ import Home from './components/Home'
 import Login from './components/Auth/Login'
 import Register from './components/Auth/Register'
 import Main from './components/Layout/Main'
+import NotFound from './components/NotFound'
+import Profile from './components/Profile/Profile'
 
 import setAuthHeader from './utils/setAuthHeader'
 import { logoutUser, getCurrentUser } from './actions/authActions'
@@ -36,6 +38,8 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
+                <Route path="/profile:userId" component={Profile} />
+                <Route component={NotFound} />
               </Switch>
             </Main>
           </BrowserRouter>
